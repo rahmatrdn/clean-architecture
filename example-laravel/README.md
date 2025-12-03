@@ -1,59 +1,92 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Example Laravel - Clean Architecture
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This project demonstrates how to implement **Clean Architecture** principles in a **Laravel 12** application.
 
-## About Laravel
+The goal of this repository is to show a clear separation of concerns, making the application more maintainable, testable, and scalable by decoupling business logic from the framework's HTTP layer.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🏗️ Project Structure
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The application follows a modular structure inspired by Clean Architecture:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+app/
+├── Http/
+│   └── Controllers/   # Entry points (Thin controllers)
+├── Models/            # Eloquent Models (Data structure)
+├── Repositories/      # Data Access Layer (Repository Pattern)
+└── UseCases/          # Business Logic (Application specific use cases)
+```
 
-## Learning Laravel
+### Key Concepts
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+-   **Use Cases**: Contain the core business logic. They are framework-agnostic where possible and orchestrate the flow of data.
+-   **Repositories**: Handle data persistence and retrieval, abstracting the database layer from the business logic.
+-   **Controllers**: Responsible only for handling HTTP requests, validating input, calling the appropriate Use Case, and returning a response.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Getting Started
 
-## Laravel Sponsors
+### Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   PHP 8.2+
+-   Composer
+-   SQLite (default) or MySQL
 
-### Premium Partners
+### Installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1.  **Clone the repository**
+    ```bash
+    git clone <repository-url>
+    cd example-laravel
+    ```
 
-## Contributing
+2.  **Automated Setup**
+    We have a convenient composer script to set up everything for you:
+    ```bash
+    composer run setup
+    ```
+    *This command will install dependencies, setup the `.env` file, generate the app key, run migrations, and build frontend assets.*
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    **OR Manual Setup**
+    ```bash
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+    php artisan migrate
+    ```
 
-## Code of Conduct
+3.  **Start the Server**
+    ```bash
+    composer run dev
+    ```
+    Or manually:
+    ```bash
+    php artisan serve
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🧪 Testing
 
-## Security Vulnerabilities
+This project uses **Pest PHP** for testing.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+# Run all tests
+php artisan test
 
-## License
+# Run specific test
+php artisan test --filter=TaskTest
+```
+
+## 📚 API Documentation
+
+API documentation and collection are available in the `bruno-api-docs` directory. You can use [Bruno](https://www.usebruno.com/) to open and test the API endpoints.
+
+## 🛠️ Tech Stack
+
+-   **Framework**: Laravel 12
+-   **Architecture**: Clean Architecture
+-   **Testing**: Pest PHP
+-   **API Docs**: Bruno
+-   **Code Style**: Laravel Pint
+
+## 📝 License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

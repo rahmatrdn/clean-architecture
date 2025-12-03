@@ -1,0 +1,12 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "laravel-boost",
+    "herd"
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__laravel-boost__search-docs"
+    ]
+  }
+}

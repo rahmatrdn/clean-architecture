@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "EXAMPLE - LARAVEL CLEAN ARCHICTECTURE",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
