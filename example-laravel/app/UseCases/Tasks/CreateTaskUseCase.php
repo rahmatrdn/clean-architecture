@@ -15,7 +15,7 @@ class CreateTaskUseCase
         protected TaskRepository $taskRepository
     ) {}
 
-    public function execute(array $data): object
+    public function create(array $data): object
     {
         $validator = Validator::make($data, [
             'title' => 'required|string|max:255',

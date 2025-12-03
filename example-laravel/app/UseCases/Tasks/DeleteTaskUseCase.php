@@ -12,7 +12,7 @@ class DeleteTaskUseCase
         protected TaskRepository $taskRepository
     ) {}
 
-    public function execute(int $id): bool
+    public function delete(int $id): bool
     {
         try {
             return $this->taskRepository->delete($id);

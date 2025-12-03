@@ -15,7 +15,7 @@ class UpdateTaskUseCase
         protected TaskRepository $taskRepository
     ) {}
 
-    public function execute(int $id, array $data): bool
+    public function update(int $id, array $data): bool
     {
         $validator = Validator::make($data, [
             'title' => 'sometimes|string|max:255',

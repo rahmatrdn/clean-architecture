@@ -12,7 +12,7 @@ class GetTasksUseCase
         protected TaskRepository $taskRepository
     ) {}
 
-    public function execute(array $filters = [], array $pagination = []): array
+    public function getAll(array $filters = [], array $pagination = []): array
     {
         try {
             return $this->taskRepository->getAll($filters, $pagination);

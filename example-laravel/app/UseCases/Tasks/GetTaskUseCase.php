@@ -12,7 +12,7 @@ class GetTaskUseCase
         protected TaskRepository $taskRepository
     ) {}
 
-    public function execute(int $id): ?object
+    public function getByID(int $id): ?object
     {
         try {
             return $this->taskRepository->GetByID($id);

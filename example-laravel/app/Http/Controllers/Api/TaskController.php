@@ -15,6 +15,7 @@ use Illuminate\Http\JsonResponse;
 class TaskController extends Controller
 {
     public function __construct(
+        // Dependency Injection
         protected GetTasksUseCase $getTasksUseCase,
         protected GetTaskUseCase $getTaskUseCase,
         protected CreateTaskUseCase $createTaskUseCase,
@@ -30,7 +31,7 @@ class TaskController extends Controller
                 'page' => $request->input('page', 1),
                 'per_page' => $request->input('per_page', 10),
             ];
-            $tasks = $this->getTasksUseCase->execute($filters, $pagination);
+            $tasks = $this->getTasksUseCase->getAll($filters, $pagination);
             return response()->json($tasks);
         } catch (Exception $e) {
             return $this->sendErrorResponse();
@@ -40,7 +41,7 @@ class TaskController extends Controller
     public function store(Request $request): JsonResponse
     {
         try {
-            $task = $this->createTaskUseCase->execute($request->all());
+            $task = $this->createTaskUseCase->create($request->all());
             return response()->json($task, 201);
         } catch (Exception $e) {
             return $this->sendErrorResponse();
@@ -50,7 +51,7 @@ class TaskController extends Controller
     public function show(string $id): JsonResponse
     {
         try {
-            $task = $this->getTaskUseCase->execute((int) $id);
+            $task = $this->getTaskUseCase->getByID((int) $id);
             if (!$task) {
                 return response()->json(['error' => 'Task not found'], 404);
             }
@@ -63,7 +64,7 @@ class TaskController extends Controller
     public function update(Request $request, string $id): JsonResponse
     {
         try {
-            $updated = $this->updateTaskUseCase->execute((int) $id, $request->all());
+            $updated = $this->updateTaskUseCase->update((int) $id, $request->all());
             if (!$updated) {
                 return response()->json(['error' => 'Task not found or update failed'], 404);
             }
@@ -76,7 +77,7 @@ class TaskController extends Controller
     public function destroy(string $id): JsonResponse
     {
         try {
-            $deleted = $this->deleteTaskUseCase->execute((int) $id);
+            $deleted = $this->deleteTaskUseCase->delete((int) $id);
             if (!$deleted) {
                 return response()->json(['error' => 'Task not found or delete failed'], 404);
             }
