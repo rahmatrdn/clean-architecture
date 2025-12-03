@@ -58,7 +58,13 @@ class TaskRepository
                 ]
             ];
         } catch (Exception $e) {
-            Log::error("Error in " . __METHOD__ . ": " . $e->getMessage());
+            Log::error(
+                message: "error",
+                context: [
+                    'method' => __METHOD__,
+                    'message' => $e->getMessage()
+                ]
+            );
             throw new Exception("Error fetching tasks: " . $e->getMessage());
         }
     }
@@ -69,7 +75,13 @@ class TaskRepository
             $result = DB::select('SELECT * FROM tasks WHERE id = ?', [$id]);
             return $result[0] ?? null;
         } catch (Exception $e) {
-            Log::error("Error in " . __METHOD__ . ": " . $e->getMessage());
+            Log::error(
+                message: "error",
+                context: [
+                    'method' => __METHOD__,
+                    'message' => $e->getMessage()
+                ]
+            );
             throw new Exception("Error finding task: " . $e->getMessage());
         }
     }
@@ -79,7 +91,13 @@ class TaskRepository
         try {
             return Task::create($data);
         } catch (Exception $e) {
-            Log::error("Error in " . __METHOD__ . ": " . $e->getMessage());
+            Log::error(
+                message: "error",
+                context: [
+                    'method' => __METHOD__,
+                    'message' => $e->getMessage()
+                ]
+            );
             throw new Exception("Error creating task: " . $e->getMessage());
         }
     }
@@ -93,7 +111,13 @@ class TaskRepository
             }
             return $task->update($data);
         } catch (Exception $e) {
-            Log::error("Error in " . __METHOD__ . ": " . $e->getMessage());
+            Log::error(
+                message: "error",
+                context: [
+                    'method' => __METHOD__,
+                    'message' => $e->getMessage()
+                ]
+            );
             throw new Exception("Error updating task: " . $e->getMessage());
         }
     }
@@ -107,7 +131,13 @@ class TaskRepository
             }
             return $task->delete();
         } catch (Exception $e) {
-            Log::error("Error in " . __METHOD__ . ": " . $e->getMessage());
+            Log::error(
+                message: "error",
+                context: [
+                    'method' => __METHOD__,
+                    'message' => $e->getMessage()
+                ]
+            );
             throw new Exception("Error deleting task: " . $e->getMessage());
         }
     }

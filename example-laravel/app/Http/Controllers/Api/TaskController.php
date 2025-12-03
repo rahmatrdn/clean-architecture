@@ -33,7 +33,7 @@ class TaskController extends Controller
             $tasks = $this->getTasksUseCase->execute($filters, $pagination);
             return response()->json($tasks);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $this->sendErrorResponse();
         }
     }
 
@@ -43,7 +43,7 @@ class TaskController extends Controller
             $task = $this->createTaskUseCase->execute($request->all());
             return response()->json($task, 201);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $this->sendErrorResponse();
         }
     }
 
@@ -56,7 +56,7 @@ class TaskController extends Controller
             }
             return response()->json($task);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $this->sendErrorResponse();
         }
     }
 
@@ -69,7 +69,7 @@ class TaskController extends Controller
             }
             return response()->json(['message' => 'Task updated successfully']);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $this->sendErrorResponse();
         }
     }
 
@@ -82,7 +82,7 @@ class TaskController extends Controller
             }
             return response()->json(['message' => 'Task deleted successfully']);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $this->sendErrorResponse();
         }
     }
 }
