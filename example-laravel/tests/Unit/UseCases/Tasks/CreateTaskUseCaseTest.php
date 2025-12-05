@@ -1,7 +1,7 @@
 <?php
 
 use App\Repositories\MySql\TaskRepository;
-use App\UseCases\Tasks\CreateTaskUseCase;
+use App\UseCases\Task\CreateTaskUseCase;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 

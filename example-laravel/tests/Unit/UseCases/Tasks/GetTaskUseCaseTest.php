@@ -1,7 +1,7 @@
 <?php
 
 use App\Repositories\MySql\TaskRepository;
-use App\UseCases\Tasks\GetTaskUseCase;
+use App\UseCases\Task\GetTaskUseCase;
 use Illuminate\Support\Facades\Log;
 
 

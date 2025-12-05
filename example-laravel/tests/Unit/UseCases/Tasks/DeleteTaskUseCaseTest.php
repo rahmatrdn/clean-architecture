@@ -1,7 +1,7 @@
 <?php
 
 use App\Repositories\MySql\TaskRepository;
-use App\UseCases\Tasks\DeleteTaskUseCase;
+use App\UseCases\Task\DeleteTaskUseCase;
 use Illuminate\Support\Facades\Log;
 
 
