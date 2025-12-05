@@ -1,0 +1,22 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://127.0.0.1:8000/api/task-category
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name" : "Materi Ajar"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
