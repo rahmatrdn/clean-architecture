@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\UseCases\Tasks\CreateTaskUseCase;
-use App\UseCases\Tasks\DeleteTaskUseCase;
-use App\UseCases\Tasks\GetTasksUseCase;
-use App\UseCases\Tasks\GetTaskUseCase;
-use App\UseCases\Tasks\UpdateTaskUseCase;
+use App\UseCases\Task\CreateTaskUseCase;
+use App\UseCases\Task\DeleteTaskUseCase;
+use App\UseCases\Task\GetTasksUseCase;
+use App\UseCases\Task\GetTaskUseCase;
+use App\UseCases\Task\UpdateTaskUseCase;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UseCases\Tasks;
+namespace App\UseCases\Task;
 
 use App\Repositories\MySql\TaskRepository;
 use Illuminate\Support\Facades\Log;
@@ -9,19 +9,19 @@ use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class CreateTaskUseCase
+class UpdateTaskUseCase
 {
     public function __construct(
         protected TaskRepository $taskRepository
     ) {}
 
-    public function create(array $data): object
+    public function update(int $id, array $data): bool
     {
         $validator = Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'task_date' => 'required|date',
-            'task_category_id' => 'nullable|exists:task_categories,id',
+            'title' => 'sometimes|string|max:255',
+            'description' => 'sometimes|string',
+            'task_date' => 'sometimes|date',
+            'task_category_id' => 'sometimes|exists:task_categories,id',
         ]);
 
         if ($validator->fails()) {
@@ -29,13 +29,15 @@ class CreateTaskUseCase
         }
 
         try {
-            return $this->taskRepository->create($data);
+            return $this->taskRepository->update($id, $data);
         } catch (Exception $e) {
             Log::error(
                 message: "error",
                 context: [
                     'method' => __METHOD__,
-                    'message' => $e->getMessage()
+                    'message' => $e->getMessage(),
+                    'task_id' => $id,
+                    'data' => $data
                 ]
             );
             throw new Exception("UseCase Error: " . $e->getMessage());
