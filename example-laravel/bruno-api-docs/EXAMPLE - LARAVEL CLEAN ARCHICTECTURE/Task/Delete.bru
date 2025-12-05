@@ -1,12 +1,12 @@
 meta {
-  name: Get All
+  name: Delete
   type: http
-  seq: 2
+  seq: 4
 }
 
-get {
-  url: http://127.0.0.1:8000/api/task
-  body: none
+delete {
+  url: http://127.0.0.1:8000/api/task/2
+  body: json
   auth: inherit
 }
 

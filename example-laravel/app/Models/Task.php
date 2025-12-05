@@ -12,5 +12,11 @@ class Task extends Model
         'title',
         'description',
         'task_date',
+        'task_category_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(TaskCategory::class, 'task_category_id');
+    }
 }

@@ -1,4 +1,4 @@
-# Example Laravel - Clean Architecture
+# Example Laravel - Clean Architecture (REST API Service)
 
 This project demonstrates how to implement **Clean Architecture** principles in a **Laravel 12** application.
 
@@ -35,7 +35,7 @@ app/
 
 1.  **Clone the repository**
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/rahmatrdn/clean-architecture.git
     cd example-laravel
     ```
 

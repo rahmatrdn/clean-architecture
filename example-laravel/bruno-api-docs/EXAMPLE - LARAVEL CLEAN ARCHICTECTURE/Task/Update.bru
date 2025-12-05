@@ -1,18 +1,18 @@
 meta {
-  name: Create
+  name: Update
   type: http
-  seq: 1
+  seq: 3
 }
 
-post {
-  url: http://127.0.0.1:8000/api/task
+put {
+  url: http://127.0.0.1:8000/api/task/2
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "title" : "Pengerjakan fitur A",
+    "title" : "Pengerjakan fitur Axx",
     "description" : "Test",
     "task_date" : "2025-02-12"
   }

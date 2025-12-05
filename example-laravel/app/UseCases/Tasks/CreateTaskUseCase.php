@@ -21,6 +21,7 @@ class CreateTaskUseCase
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'task_date' => 'required|date',
+            'task_category_id' => 'nullable|exists:task_categories,id',
         ]);
 
         if ($validator->fails()) {

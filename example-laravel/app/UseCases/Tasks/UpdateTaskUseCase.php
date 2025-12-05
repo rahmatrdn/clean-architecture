@@ -21,6 +21,7 @@ class UpdateTaskUseCase
             'title' => 'sometimes|string|max:255',
             'description' => 'sometimes|string',
             'task_date' => 'sometimes|date',
+            'task_category_id' => 'sometimes|exists:task_categories,id',
         ]);
 
         if ($validator->fails()) {
